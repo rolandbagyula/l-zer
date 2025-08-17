@@ -948,9 +948,16 @@ body {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr; /* stacked layout on all sizes */
-  gap: 2.5rem;
+  grid-template-columns: 1fr; /* mobile-first: stacked by default */
+  gap: 2rem;
   align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr; /* two columns on desktop */
+    gap: 4rem;
+  }
 }
 
 /* Prevent grid overflow in contact columns */
