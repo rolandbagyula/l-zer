@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laser Cutting Parts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p class="loading-text" data-en="Loading..." data-hu="Betöltés...">Loading...</p>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="logo">cutpart</div>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-en="Home" data-hu="Főoldal">Home</a></li>
+        <li><a href="about.html" data-en="About" data-hu="Rólunk">About</a></li>
+        <li><a href="services.html" data-en="Services" data-hu="Szolgáltatások">Services</a></li>
+        <li><a href="contact.html" data-en="Contact" data-hu="Kapcsolat">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="navbar-controls">
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hu">HU</button>
+      </div>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <button class="login-btn" data-en="Login" data-hu="Bejelentkezés">Login</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="hero-left">
+      <h1 data-en="Laser<br>Cutting<br>Parts" data-hu="Lézer<br>Vágási<br>Alkatrészek">Laser<br>Cutting<br>Parts</h1>
+      <p data-en="Access laser cutting easily online." data-hu="Hozzáférés a lézervágáshoz egyszerűen online.">Access laser cutting easily online.</p>
+      <button class="cta" data-en="Build a part" data-hu="Alkatrész készítése">Build a part</button>
+    </section>
+
+    <section class="hero-right">
+      <h2 data-en="Start build now!" data-hu="Kezdd el most!">Start build now!</h2>
+      <p data-en="Upload CAD file or utilize our parts builder." data-hu="Töltsd fel a CAD fájlt vagy használd az alkatrész építőnket.">Upload CAD file or utilize our parts builder.</p>
+      <form class="upload-box">
+        <div class="file-input-wrapper">
+          <input type="file" id="fileUpload" accept=".dwg,.dxf,.svg,.pdf">
+          <label for="fileUpload" class="file-input-label">
+            📁 Choose CAD file or drag & drop
+          </label>
+        </div>
+        <button type="submit">Upload File</button>
+      </form>
+      <div class="price-box">
+        <span class="price">29$</span>
+        <p data-en="Free 1-3 day shipping<br>on standard orders" data-hu="Ingyenes 1-3 napos szállítás<br>standard rendeléseknél">Free 1-3 day shipping<br>on standard orders</p>
+        <a href="#" class="link" data-en="View Prices" data-hu="Árak megtekintése">View Prices</a>
+      </div>
+    </section>
+  </main>
+
+  <section class="features">
+    <div class="feature">
+      <h3 data-en="Rapid crafting" data-hu="Gyors készítés">Rapid crafting</h3>
+      <p data-en="Custom parts crafted promptly, delivered to your doorstep." data-hu="Egyedi alkatrészek gyors készítése, szállítás az ajtóig.">Custom parts crafted promptly, delivered to your doorstep.</p>
+      <a href="#" class="link" data-en="Learn More" data-hu="Tudj meg többet">Learn More</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 CutPart. <span data-en="All rights reserved." data-hu="Minden jog fenntartva.">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

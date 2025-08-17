@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Laser Cutting Parts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p class="loading-text" data-en="Loading..." data-hu="Betöltés...">Loading...</p>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="logo">cutpart</div>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-en="Home" data-hu="Főoldal">Home</a></li>
+        <li><a href="about.html" data-en="About" data-hu="Rólunk">About</a></li>
+        <li><a href="services.html" data-en="Services" data-hu="Szolgáltatások">Services</a></li>
+        <li><a href="contact.html" data-en="Contact" data-hu="Kapcsolat">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="navbar-controls">
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="hu">HU</button>
+      </div>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <button class="login-btn" data-en="Login" data-hu="Bejelentkezés">Login</button>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="page-hero">
+      <div class="container">
+        <h1 data-en="Contact Us" data-hu="Kapcsolat">Contact Us</h1>
+        <p data-en="Get in touch with our expert team" data-hu="Lépj kapcsolatba szakértő csapatunkkal">Get in touch with our expert team</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2 data-en="Get In Touch" data-hu="Vedd Fel a Kapcsolatot">Get In Touch</h2>
+            <p data-en="Have questions about our services? Need a custom quote? Our team is here to help you bring your ideas to life." data-hu="Kérdéseid vannak szolgáltatásainkkal kapcsolatban? Egyedi árajánlatra van szükséged? Csapatunk itt van, hogy segítsen megvalósítani az ötleteidet.">Have questions about our services? Need a custom quote? Our team is here to help you bring your ideas to life.</p>
+            
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="contact-icon">📧</div>
+                <div class="contact-details">
+                  <h4 data-en="Email" data-hu="Email">Email</h4>
+                  <p>info@cutpart.com</p>
+                  <p>support@cutpart.com</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="contact-icon">📞</div>
+                <div class="contact-details">
+                  <h4 data-en="Phone" data-hu="Telefon">Phone</h4>
+                  <p>+1 (555) 123-4567</p>
+                  <p>+36 1 234 5678</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="contact-icon">📍</div>
+                <div class="contact-details">
+                  <h4 data-en="Address" data-hu="Cím">Address</h4>
+                  <p data-en="123 Innovation Street<br>Tech City, TC 12345<br>United States" data-hu="Innovációs utca 123<br>1234 Budapest<br>Magyarország">123 Innovation Street<br>Tech City, TC 12345<br>United States</p>
+                </div>
+              </div>
+              
+              <div class="contact-method">
+                <div class="contact-icon">⏰</div>
+                <div class="contact-details">
+                  <h4 data-en="Business Hours" data-hu="Nyitvatartás">Business Hours</h4>
+                  <p data-en="Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed" data-hu="Hétfő - Péntek: 8:00 - 18:00<br>Szombat: 9:00 - 14:00<br>Vasárnap: Zárva">Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <h3 data-en="Send us a message" data-hu="Küldj üzenetet">Send us a message</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name" data-en="Name" data-hu="Név">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" data-en="Email" data-hu="Email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="company" data-en="Company (Optional)" data-hu="Cég (Opcionális)">Company (Optional)</label>
+                <input type="text" id="company" name="company">
+              </div>
+              
+              <div class="form-group">
+                <label for="subject" data-en="Subject" data-hu="Tárgy">Subject</label>
+                <select id="subject" name="subject" required>
+                  <option value="" data-en="Select a topic" data-hu="Válassz témát">Select a topic</option>
+                  <option value="quote" data-en="Request Quote" data-hu="Árajánlat kérése">Request Quote</option>
+                  <option value="support" data-en="Technical Support" data-hu="Technikai támogatás">Technical Support</option>
+                  <option value="partnership" data-en="Partnership" data-hu="Partnerség">Partnership</option>
+                  <option value="other" data-en="Other" data-hu="Egyéb">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" data-en="Message" data-hu="Üzenet">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter" data-en="Subscribe to our newsletter for updates and special offers" data-hu="Iratkozz fel hírlevelünkre frissítésekért és különleges ajánlatokért">Subscribe to our newsletter for updates and special offers</label>
+              </div>
+              
+              <button type="submit" class="submit-btn" data-en="Send Message" data-hu="Üzenet Küldése">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loading">
+                  <div class="btn-spinner"></div>
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container">
+        <h2 data-en="Frequently Asked Questions" data-hu="Gyakran Ismételt Kérdések">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4 data-en="What file formats do you accept?" data-hu="Milyen fájlformátumokat fogadtok el?">What file formats do you accept?</h4>
+            <p data-en="We accept DWG, DXF, SVG, PDF, and AI files. For best results, we recommend DXF or DWG formats." data-hu="DWG, DXF, SVG, PDF és AI fájlokat fogadunk el. A legjobb eredmény érdekében DXF vagy DWG formátumokat ajánlunk.">We accept DWG, DXF, SVG, PDF, and AI files. For best results, we recommend DXF or DWG formats.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 data-en="What is your typical turnaround time?" data-hu="Mi a szokásos átfutási idő?">What is your typical turnaround time?</h4>
+            <p data-en="Standard orders are completed within 3-5 business days. Rush orders can be completed in 24-48 hours for an additional fee." data-hu="A standard rendelések 3-5 munkanapon belül készülnek el. A sürgős rendelések 24-48 óra alatt teljesíthetők felár ellenében.">Standard orders are completed within 3-5 business days. Rush orders can be completed in 24-48 hours for an additional fee.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 data-en="Do you offer international shipping?" data-hu="Szállítotok nemzetközileg?">Do you offer international shipping?</h4>
+            <p data-en="Yes, we ship worldwide. Shipping costs and delivery times vary by location. Contact us for specific rates." data-hu="Igen, világszerte szállítunk. A szállítási költségek és szállítási idők helyszín szerint változnak. Konkrét árakért vedd fel velünk a kapcsolatot.">Yes, we ship worldwide. Shipping costs and delivery times vary by location. Contact us for specific rates.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4 data-en="What materials can you cut?" data-hu="Milyen anyagokat tudtok vágni?">What materials can you cut?</h4>
+            <p data-en="We work with steel, stainless steel, aluminum, brass, copper, and various plastics. Material thickness ranges from 0.5mm to 25mm." data-hu="Acéllal, rozsdamentes acéllal, alumíniummal, sárgarézzel, rézzel és különféle műanyagokkal dolgozunk. Az anyagvastagság 0,5mm-től 25mm-ig terjed.">We work with steel, stainless steel, aluminum, brass, copper, and various plastics. Material thickness ranges from 0.5mm to 25mm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 CutPart. <span data-en="All rights reserved." data-hu="Minden jog fenntartva.">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
