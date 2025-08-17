@@ -948,8 +948,23 @@ body {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr; /* stacked layout on all sizes */
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Prevent grid overflow in contact columns */
+.contact-info,
+.contact-form {
+  min-width: 0; /* allow shrinking within CSS Grid to prevent horizontal overflow */
+}
+
+/* Wrap long words/URLs/emails to avoid overflow */
+.contact-details p,
+.contact-details a,
+.contact-info p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-info h2 {
