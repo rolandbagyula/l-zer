@@ -63,92 +63,131 @@ document.addEventListener('DOMContentLoaded', function() {
   const fileInput = document.getElementById("fileUpload");
   const fileLabel = document.querySelector(".file-input-label");
   
-  if (!uploadForm || !fileInput || !fileLabel) return;
+  if (uploadForm && fileInput && fileLabel) {
+    // Handle form submission
+    uploadForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileSize = (file.size / 1024 / 1024).toFixed(2); // MB
+        const successMsg = currentLanguage === 'en' 
+          ? `✅ File uploaded successfully!\n\nFile: ${file.name}\nSize: ${fileSize} MB\nType: ${file.type || 'Unknown'}`
+          : `✅ Fájl sikeresen feltöltve!\n\nFájl: ${file.name}\nMéret: ${fileSize} MB\nTípus: ${file.type || 'Ismeretlen'}`;
+        alert(successMsg);
+      } else {
+        const errorMsg = currentLanguage === 'en' 
+          ? "⚠️ Please select a CAD file first."
+          : "⚠️ Kérlek, először válassz egy CAD fájlt.";
+        alert(errorMsg);
+      }
+    });
 
-  // Handle form submission
-  uploadForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    if (fileInput.files.length > 0) {
-      const file = fileInput.files[0];
-      const fileSize = (file.size / 1024 / 1024).toFixed(2); // MB
-      const successMsg = currentLanguage === 'en' 
-        ? `✅ File uploaded successfully!\n\nFile: ${file.name}\nSize: ${fileSize} MB\nType: ${file.type || 'Unknown'}`
-        : `✅ Fájl sikeresen feltöltve!\n\nFájl: ${file.name}\nMéret: ${fileSize} MB\nTípus: ${file.type || 'Ismeretlen'}`;
-      alert(successMsg);
-    } else {
-      const errorMsg = currentLanguage === 'en' 
-        ? "⚠️ Please select a CAD file first."
-        : "⚠️ Kérlek, először válassz egy CAD fájlt.";
-      alert(errorMsg);
+    // Update label when file is selected
+    fileInput.addEventListener('change', function() {
+      if (this.files.length > 0) {
+        const fileName = this.files[0].name;
+        fileLabel.textContent = `✓ ${fileName}`;
+        fileLabel.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+        fileLabel.style.background = 'rgba(255, 255, 255, 0.15)';
+      } else {
+        const defaultText = currentLanguage === 'en' 
+          ? '📁 Choose CAD file or drag & drop'
+          : '📁 Válassz CAD fájlt vagy húzd ide';
+        fileLabel.textContent = defaultText;
+        fileLabel.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+        fileLabel.style.background = 'rgba(255, 255, 255, 0.1)';
+      }
+    });
+
+    // Drag and drop functionality
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      fileLabel.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
-  });
 
-  // Update label when file is selected
-  fileInput.addEventListener('change', function() {
-    if (this.files.length > 0) {
-      const fileName = this.files[0].name;
-      fileLabel.textContent = `✓ ${fileName}`;
-      fileLabel.style.borderColor = 'rgba(255, 255, 255, 0.6)';
-      fileLabel.style.background = 'rgba(255, 255, 255, 0.15)';
-    } else {
-      const defaultText = currentLanguage === 'en' 
-        ? '📁 Choose CAD file or drag & drop'
-        : '📁 Válassz CAD fájlt vagy húzd ide';
-      fileLabel.textContent = defaultText;
+    ['dragenter', 'dragover'].forEach(eventName => {
+      fileLabel.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      fileLabel.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight() {
+      fileLabel.style.borderColor = '#f44336';
+      fileLabel.style.background = 'rgba(244, 67, 54, 0.1)';
+    }
+
+    function unhighlight() {
       fileLabel.style.borderColor = 'rgba(255, 255, 255, 0.3)';
       fileLabel.style.background = 'rgba(255, 255, 255, 0.1)';
     }
-  });
 
-  // Drag and drop functionality
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    fileLabel.addEventListener(eventName, preventDefaults, false);
-  });
+    fileLabel.addEventListener('drop', handleDrop, false);
 
-  function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  ['dragenter', 'dragover'].forEach(eventName => {
-    fileLabel.addEventListener(eventName, highlight, false);
-  });
-
-  ['dragleave', 'drop'].forEach(eventName => {
-    fileLabel.addEventListener(eventName, unhighlight, false);
-  });
-
-  function highlight() {
-    fileLabel.style.borderColor = '#f44336';
-    fileLabel.style.background = 'rgba(244, 67, 54, 0.1)';
-  }
-
-  function unhighlight() {
-    fileLabel.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-    fileLabel.style.background = 'rgba(255, 255, 255, 0.1)';
-  }
-
-  fileLabel.addEventListener('drop', handleDrop, false);
-
-  function handleDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    
-    if (files.length > 0) {
-      fileInput.files = files;
-      const event = new Event('change', { bubbles: true });
-      fileInput.dispatchEvent(event);
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      
+      if (files.length > 0) {
+        fileInput.files = files;
+        const event = new Event('change', { bubbles: true });
+        fileInput.dispatchEvent(event);
+      }
     }
   }
 
-  // Mobile menu functionality
+  // Mobile menu functionality - simplified and reliable
   const mobileMenu = document.querySelector('.mobile-menu');
   const navbar = document.querySelector('.navbar nav');
   
   if (mobileMenu && navbar) {
-    mobileMenu.addEventListener('click', function() {
-      navbar.style.display = navbar.style.display === 'flex' ? 'none' : 'flex';
-      this.classList.toggle('active');
+    // Toggle menu on click
+    mobileMenu.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const isOpen = navbar.classList.contains('mobile-open');
+      
+      if (isOpen) {
+        navbar.classList.remove('mobile-open');
+        this.classList.remove('active');
+      } else {
+        navbar.classList.add('mobile-open');
+        this.classList.add('active');
+      }
+    });
+    
+    // Close menu when clicking on navigation links
+    const navLinks = navbar.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbar.classList.remove('mobile-open');
+        mobileMenu.classList.remove('active');
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const isClickInsideNav = navbar.contains(event.target);
+      const isClickOnMenu = mobileMenu.contains(event.target);
+      
+      if (!isClickInsideNav && !isClickOnMenu) {
+        navbar.classList.remove('mobile-open');
+        mobileMenu.classList.remove('active');
+      }
+    });
+    
+    // Close menu on window resize to desktop
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        navbar.classList.remove('mobile-open');
+        mobileMenu.classList.remove('active');
+      }
     });
   }
 
@@ -184,11 +223,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Smooth scrolling for anchor links
+  // Smooth scrolling for anchor links and logo click
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const href = this.getAttribute('href');
+      
+      // If clicking logo or #top, scroll to top
+      if (href === '#top' || this.classList.contains('logo')) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        return;
+      }
+      
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({
           behavior: 'smooth',
