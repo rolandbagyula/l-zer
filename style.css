@@ -432,6 +432,11 @@ body {
   .hero-right {
     order: -1;
   }
+  /* About page: stack columns earlier to avoid overflow on tablets */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
   /* Contact page spacing on tablets */
   .contact-section {
     padding: 3rem 0;
@@ -830,6 +835,27 @@ body {
   font-size: 1.1rem;
 }
 
+/* Ensure About page stacks on smaller screens (override order) */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-image {
+    height: 250px;
+  }
+}
+
 /* Services Page Styles */
 .services-grid {
   padding: 4rem 0;
@@ -961,6 +987,11 @@ body {
 }
 
 /* Prevent grid overflow in contact columns */
+.about-text,
+.about-image {
+  min-width: 0; /* allow shrinking within CSS Grid to prevent horizontal overflow */
+}
+
 .contact-info,
 .contact-form {
   min-width: 0; /* allow shrinking within CSS Grid to prevent horizontal overflow */
@@ -1188,6 +1219,29 @@ body {
 }
 
 /* Touch-friendly improvements */
+/* Final responsive guard: ensure About page stacks on small screens */
+@media (max-width: 1024px) {
+  .about-content .about-grid {
+    grid-template-columns: 1fr !important;
+    display: block !important; /* force stacking if any grid override fails */
+    gap: 0;
+  }
+  .about-text,
+  .about-image {
+    width: 100%;
+    min-width: 0;
+    float: none;
+    margin: 0 0 1.5rem 0;
+  }
+  .image-placeholder {
+    width: 100%;
+    max-width: 100%;
+  }
+  .laser-animation {
+    max-width: 100%;
+  }
+}
+
 @media (hover: none) and (pointer: coarse) {
   .navbar a,
   .cta,
