@@ -13,6 +13,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Fluid media to prevent overflow on small screens */
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -446,6 +456,49 @@ body {
   }
   .container {
     padding: 0 1.25rem;
+  }
+  /* Tablet: use mobile-style nav without animation to avoid overflow */
+  .navbar {
+    padding: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .navbar nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(244, 67, 54, 0.2);
+    z-index: 1001;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  }
+  .navbar nav.mobile-open {
+    display: block;
+  }
+  .navbar nav ul {
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 0;
+  }
+  .navbar nav li {
+    width: 100%;
+  }
+  .navbar nav a {
+    display: block;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .mobile-menu {
+    display: flex;
+    order: 2;
+  }
+  .navbar-controls {
+    gap: 0.5rem;
+    order: 1;
   }
 }
 
